@@ -4,46 +4,43 @@
 from xml.sax import make_parser
 from xml.sax.handler import ContentHandler
 
+
 class SmallSMILHandler(ContentHandler):
 
-    def __init__ (self):
+    def __init__(self):
 
         self.list = []
 
     def startElement(self, name, attrs):
-        self.dicroot = {'width':"", 'height':"", 'background-color':""}
-        self.dicregion = {'id':"", 'top':"", 'bottom':"", 'left':"", 'right':""}
-        self.dicimg = {'src': "", 'region':"", 'begin':"", 'dur':""}
-        self.dicaudio = {'src': "",'begin':"",'dur':""}
-        self.dictextstream = {'src': "",'region':""}
+        dic = {}
 
         if name == 'root-layout':
-            self.dicroot['width'] = attrs.get('width')
-            self.dicroot['height'] = attrs.get('height')
-            self.dicroot['background-color'] = attrs.get('background-color')
-            self.list.append(self.dicroot) 
+            dic['width'] = attrs.get('width')
+            dic['height'] = attrs.get('height')
+            dic['background-color'] = attrs.get('background-color')
+            self.list.append(dic)
         if name == 'region':
-            self.dicregion['id'] = attrs.get('id', "")
-            self.dicregion['top'] = attrs.get('top',"")
-            self.dicregion['bottom'] = attrs.get('bottom', "")
-            self.dicregion['left'] = attrs.get('left',"")
-            self.dicregion['right'] = attrs.get('right',"")
-            self.list.append(self.dicregion)
+            dic['id'] = attrs.get('id', "")
+            dic['top'] = attrs.get('top', "")
+            dic['bottom'] = attrs.get('bottom', "")
+            dic['left'] = attrs.get('left', "")
+            dic['right'] = attrs.get('right', "")
+            self.list.append(dic)
         elif name == 'img':
-            self.dicimg['src'] = attrs.get('src', "")
-            self.dicimg['region'] = attrs.get('region',"")
-            self.dicimg['begin'] = attrs.get('begin', "")
-            self.dicimg['dur'] = attrs.get('dur',"")
-            self.list.append(self.dicimg)
+            dic['src'] = attrs.get('src', "")
+            dic['region'] = attrs.get('region', "")
+            dic['begin'] = attrs.get('begin', "")
+            dic['dur'] = attrs.get('dur', "")
+            self.list.append(dic)
         elif name == 'audio':
-            self.dicaudio['src'] = attrs.get('src', "")
-            self.dicaudio['begin'] = attrs.get('begin',"")
-            self.dicaudio['dur'] = attrs.get('dur', "")
-            self.list.append(self.dicaudio)
+            dic['src'] = attrs.get('src', "")
+            dic['begin'] = attrs.get('begin', "")
+            dic['dur'] = attrs.get('dur', "")
+            self.list.append(dic)
         elif name == 'textstream':
-            self.dictextstream['src'] = attrs.get('src', "")
-            self.dictextstream['region'] = attrs.get('region',"")
-            self.list.append(self.dictextstream)
+            dic['src'] = attrs.get('src', "")
+            dic['region'] = attrs.get('region', "")
+            self.list.append(dic)
 
     def get_tags(self):
         return(self.list)
