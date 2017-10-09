@@ -11,9 +11,10 @@ class SmallSMILHandler(ContentHandler):
 
         self.list = []
         self.etiquetas = {'root-layout': ['width', 'height', 'bgcol'],
-        'region':  ['id', 'top', 'bottom', 'left', 'right'], 'img': ['src', 
-        'region', 'begin', 'dur'], 'audio': ['src', 'begin', 'dur'], 
-        'textstream': ['src', 'region']}
+                          'region':  ['id', 'top', 'bottom', 'left', 'right'],
+                          'img': ['src', 'region', 'begin', 'dur'],
+                          'audio': ['src', 'begin', 'dur'],
+                          'textstream': ['src', 'region']}
 
     def startElement(self, name, attrs):
         dic = {}
