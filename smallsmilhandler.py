@@ -14,8 +14,8 @@ class SmallSMILHandler(ContentHandler):
                           'region':  ['id', 'top', 'bottom', 'left', 'right'],
                           'img': ['src', 'region', 'begin', 'dur'],
                           'audio': ['src', 'begin', 'dur'],
-                          'textstream': ['src', 'region']}
-
+                          'textstream': ['src', 'region']
+                         }
     def startElement(self, name, attrs):
         dic = {}
 
