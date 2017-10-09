@@ -10,41 +10,18 @@ class SmallSMILHandler(ContentHandler):
     def __init__(self):
 
         self.list = []
+        self.etiquetas = {'root-layout': ['width', 'height', 'bgcol'],
+        'region':  ['id', 'top', 'bottom', 'left', 'right'], 'img': ['src', 
+        'region', 'begin', 'dur'], 'audio': ['src', 'begin', 'dur'], 
+        'textstream': ['src', 'region']}
 
     def startElement(self, name, attrs):
         dic = {}
 
-        if name == 'root-layout':
+        if name in self.etiquetas:
             dic['name'] = name
-            dic['width'] = attrs.get('width')
-            dic['height'] = attrs.get('height')
-            dic['background-color'] = attrs.get('background-color')
-            self.list.append(dic)
-        if name == 'region':
-            dic['name'] = name
-            dic['id'] = attrs.get('id', "")
-            dic['top'] = attrs.get('top', "")
-            dic['bottom'] = attrs.get('bottom', "")
-            dic['left'] = attrs.get('left', "")
-            dic['right'] = attrs.get('right', "")
-            self.list.append(dic)
-        elif name == 'img':
-            dic['name'] = name
-            dic['src'] = attrs.get('src', "")
-            dic['region'] = attrs.get('region', "")
-            dic['begin'] = attrs.get('begin', "")
-            dic['dur'] = attrs.get('dur', "")
-            self.list.append(dic)
-        elif name == 'audio':
-            dic['name'] = name
-            dic['src'] = attrs.get('src', "")
-            dic['begin'] = attrs.get('begin', "")
-            dic['dur'] = attrs.get('dur', "")
-            self.list.append(dic)
-        elif name == 'textstream':
-            dic['name'] = name
-            dic['src'] = attrs.get('src', "")
-            dic['region'] = attrs.get('region', "")
+            for atrib in self.etiquetas[name]:
+                dic[atrib] = attrs.get(atrib, "")
             self.list.append(dic)
 
     def get_tags(self):
