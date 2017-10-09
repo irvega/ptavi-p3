@@ -13,15 +13,13 @@ if __name__ == "__main__":
     parser = make_parser()
     sHandler = SmallSMILHandler()
     parser.setContentHandler(sHandler)
-    
-    parser.parse(open(sys.argv[1]))     
+    parser.parse(open(sys.argv[1]))
     lista = sHandler.get_tags()
 
     for etiquetasD in lista:
         print(etiquetasD['name'], "\t")
-        for atributo in etiquetasD:
-            if etiquetasD[atributo] != "" and atributo != 'name':
-                print(atributo, "=", etiquetasD[atributo])
+        for atribt in etiquetasD:
+            if etiquetasD[atribt] != "" and atribt != 'name':
+                print(atribt, "=", '"', etiquetasD[atribt], '"', sep="")
             else:
                 pass
-
