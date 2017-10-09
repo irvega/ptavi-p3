@@ -16,8 +16,12 @@ if __name__ == "__main__":
     
     parser.parse(open(sys.argv[1]))     
     lista = sHandler.get_tags()
-#    print(lista)
-    for etiqueta in lista:
-        print(etiqueta['name'])
-        for atributo in etiqueta:
-            print(atributo)
+
+    for etiquetasD in lista:
+        print(etiquetasD['name'], "\t")
+        for atributo in etiquetasD:
+            if etiquetasD[atributo] != "" and atributo != 'name':
+                print(atributo, "=", etiquetasD[atributo])
+            else:
+                pass
+
