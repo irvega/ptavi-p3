@@ -15,11 +15,13 @@ class SmallSMILHandler(ContentHandler):
         dic = {}
 
         if name == 'root-layout':
+            dic['name'] = name
             dic['width'] = attrs.get('width')
             dic['height'] = attrs.get('height')
             dic['background-color'] = attrs.get('background-color')
             self.list.append(dic)
         if name == 'region':
+            dic['name'] = name
             dic['id'] = attrs.get('id', "")
             dic['top'] = attrs.get('top', "")
             dic['bottom'] = attrs.get('bottom', "")
@@ -27,17 +29,20 @@ class SmallSMILHandler(ContentHandler):
             dic['right'] = attrs.get('right', "")
             self.list.append(dic)
         elif name == 'img':
+            dic['name'] = name
             dic['src'] = attrs.get('src', "")
             dic['region'] = attrs.get('region', "")
             dic['begin'] = attrs.get('begin', "")
             dic['dur'] = attrs.get('dur', "")
             self.list.append(dic)
         elif name == 'audio':
+            dic['name'] = name
             dic['src'] = attrs.get('src', "")
             dic['begin'] = attrs.get('begin', "")
             dic['dur'] = attrs.get('dur', "")
             self.list.append(dic)
         elif name == 'textstream':
+            dic['name'] = name
             dic['src'] = attrs.get('src', "")
             dic['region'] = attrs.get('region', "")
             self.list.append(dic)
