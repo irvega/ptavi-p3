@@ -10,18 +10,19 @@ class SmallSMILHandler(ContentHandler):
     def __init__(self):
 
         self.list = []
-        self.etiquetas = {'root-layout': ['width', 'height', 'bgcol'],
-                          'region':  ['id', 'top', 'bottom', 'left', 'right'],
-                          'img': ['src', 'region', 'begin', 'dur'],
-                          'audio': ['src', 'begin', 'dur'],
-                          'textstream': ['src', 'region']}
+        self.label = {'root-layout': ['width', 'height', 'background-color'],
+                      'region':  ['id', 'top', 'bottom', 'left', 'right'],
+                      'img': ['src', 'region', 'begin', 'dur'],
+                      'audio': ['src', 'begin', 'dur'],
+                      'textstream': ['src', 'region']
+                      }
 
     def startElement(self, name, attrs):
         dic = {}
 
-        if name in self.etiquetas:
+        if name in self.label:
             dic['name'] = name
-            for atrib in self.etiquetas[name]:
+            for atrib in self.label[name]:
                 dic[atrib] = attrs.get(atrib, "")
             self.list.append(dic)
 
