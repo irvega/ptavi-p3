@@ -45,7 +45,7 @@ class KaraokeLocal(SmallSMILHandler):
         with open(fichjson, 'w') as fijson:
             json.dump(self.lista, fijson)
     """
-    Convierte el fichero .smil en .json 
+    Convierte el fichero .smil en .json
     """
 
     def do_local(self):
