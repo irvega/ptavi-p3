@@ -15,6 +15,7 @@ try:
 except FileNotFoundError:
     sys.exit('This file not found, try again')
 
+
 class KaraokeLocal(SmallSMILHandler):
     def __init__(self):
         parser = make_parser()
@@ -33,7 +34,7 @@ class KaraokeLocal(SmallSMILHandler):
             liststr += "\n"
         return(liststr)
 
-    def to_json(self, fichsmil, fichjson = ''):
+    def to_json(self, fichsmil, fichjson=''):
         if fichjson == '':
             fichjson = fichsmil.split('.')[0] + '.json'
         with open(fichjson, 'w') as fijson:
