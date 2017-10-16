@@ -23,9 +23,9 @@ class KaraokeLocal(SmallSMILHandler):
         parser.setContentHandler(sHandler)
         parser.parse(open(sys.argv[1]))
         self.lista = sHandler.get_tags()
-"""
-Lee fichero e imprime atributos y elementos
-"""
+    """
+    Lee fichero e imprime atributos y elementos
+    """
 
     def __str__(self):
         liststr = ''
@@ -36,17 +36,17 @@ Lee fichero e imprime atributos y elementos
                     liststr += "\t" + atribt + '="' + etiquetasD[atribt] + '"'
             liststr += "\n"
         return(liststr)
-"""
-Recorre la lista donde guardo el fichero y la imprime por filas
-"""
+    """
+    Recorre la lista donde guardo el fichero y la imprime por filas
+    """
     def to_json(self, fichsmil, fichjson=''):
         if fichjson == '':
             fichjson = fichsmil.split('.')[0] + '.json'
         with open(fichjson, 'w') as fijson:
             json.dump(self.lista, fijson)
-"""
-Convierte el fichero .smil en .json 
-"""
+    """
+    Convierte el fichero .smil en .json 
+    """
 
     def do_local(self):
         for etiquetasD in self.lista:
@@ -56,9 +56,9 @@ Convierte el fichero .smil en .json
                     short_atrib = etiquetasD[atribt].split('/')[-1]
                     urlretrieve(long_atrib, short_atrib)
                     etiquetasD[atribt] = short_atrib
-"""
-Guarda los archivos en local y cambia el nombre de directorio a fichero
-"""
+    """
+    Guarda los archivos en local y cambia el nombre de directorio a fichero
+    """
 
 if __name__ == "__main__":
     objeto = KaraokeLocal()
