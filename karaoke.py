@@ -13,7 +13,7 @@ if len(sys.argv) != 2:
 try:
     open(sys.argv[1])
 except FileNotFoundError:
-    sys.exit('This file not found, try again')
+    sys.exit('  This file not found, try again')
 
 
 class KaraokeLocal(SmallSMILHandler):
