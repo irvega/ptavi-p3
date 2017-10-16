@@ -10,7 +10,10 @@ from urllib.request import urlretrieve
 
 if len(sys.argv) != 2:
     sys.exit("  Usage: python3 karaoke.py file.smil")
-
+try:
+    open(sys.argv[1])
+except FileNotFoundError:
+    sys.exit('This file not found, try again')
 
 class KaraokeLocal(SmallSMILHandler):
     def __init__(self):
